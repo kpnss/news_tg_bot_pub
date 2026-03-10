@@ -1,6 +1,6 @@
-# 📰 Telegram RSS Bot
+# 📰 Telegram RSS Feed Bot
 
-A simple Python bot that checks a list of RSS feeds and sends new articles to a Telegram chat. It keeps track of already-sent links using a SQLite database to avoid duplicates.
+A simple Python bot that checks a list of RSS feeds and sends new articles to a Telegram chat. You can add websites you are interested in and receive updates on their most recent publications. It keeps track of already-sent links using a SQLite database to avoid duplicates.
 
 ## How it works
 
