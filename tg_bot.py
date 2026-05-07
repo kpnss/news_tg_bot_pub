@@ -56,12 +56,14 @@ def send_message(text):
 def check_feed():
     
     for url in RSS_URLs:
-        feed = feedparser.parse(url)
-        print("Final URL:", feed.href)
+        response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
+        feed = feedparser.parse(response.content)
+        feed.href = url  
+        print("Final URL:", url)
         print("Bozo:", feed.bozo)
         print("Entries Found:", len(feed.entries))
         for entry in feed.entries:
-            article_id = f"{url}:{entry.get('id', entry.link)}" # unique id
+            article_id = f"{url}:{entry.get('id', entry.link)}"
 
             cursor.execute("SELECT 1 FROM sent_items WHERE id = ?", (article_id,))
             if cursor.fetchone():
